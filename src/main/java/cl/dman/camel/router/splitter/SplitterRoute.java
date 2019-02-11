@@ -22,7 +22,7 @@ public class SplitterRoute extends RouteBuilder {
 
 	//Constructor necesario para crear los endpoints reales
 	public SplitterRoute() {
-		this.origen = "rest:post:filter";
+		this.origen = "rest:post:splitter";
 		this.destino = "stream:out";
 	}
 
