@@ -7,7 +7,7 @@ public class DocumentoRequest {
 	public DocumentoRequest() {
 	}
 
-	DocumentoRequest(int numero, String tipo) {
+	public DocumentoRequest(int numero, String tipo) {
 		this.numero = numero;
 		this.tipo = tipo;
 	}
