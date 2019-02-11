@@ -3,6 +3,9 @@ package cl.dman.camel.router.contentbased;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.dataformat.JsonLibrary;
 
+/**
+ * Ruta que recibe un documento, y rutea a diferentes endpoints de acuerdo al contenido
+ */
 public class ContentBasedRoute extends RouteBuilder {
 	private final String origen;
 	private final String destinoFacturas;
@@ -26,12 +29,18 @@ public class ContentBasedRoute extends RouteBuilder {
 	@Override
 	public void configure() {
 		from(origen)
-			.unmarshal().json(JsonLibrary.Jackson, ContentRequest.class)
+
+			//Transformación de JSON al tipo de dato interno DocumentoRequest
+			.unmarshal().json(JsonLibrary.Jackson, DocumentoRequest.class)
+
+			//Se crea un choice, que verifica el tipo de documento y lo envía al endpoint correspondiente
 			.choice()
 				.when(simple("${body.tipo} == 'Factura'"))
 					.to(destinoFacturas)
 				.when(simple("${body.tipo} == 'Guia Despacho'"))
 					.to(destinoGuia)
+
+				//Si no se cumple ninguna condicion, se pasa al otherwise()
 				.otherwise()
 					.to(destinoOtro)
 		;

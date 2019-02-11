@@ -1,13 +1,13 @@
 package cl.dman.camel.router.contentbased;
 
-public class ContentRequest {
+public class DocumentoRequest {
 	private int numero;
 	private String tipo;
 
-	public ContentRequest() {
+	public DocumentoRequest() {
 	}
 
-	ContentRequest(int numero, String tipo) {
+	DocumentoRequest(int numero, String tipo) {
 		this.numero = numero;
 		this.tipo = tipo;
 	}
