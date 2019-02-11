@@ -1,4 +1,4 @@
-package cl.dman.camel.router.contentbased;
+package cl.dman.camel.router;
 
 public class DocumentoRequest {
 	private int numero;
