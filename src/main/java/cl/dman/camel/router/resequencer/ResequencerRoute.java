@@ -1,8 +1,6 @@
-package cl.dman.camel.router.sequencer;
+package cl.dman.camel.router.resequencer;
 
 import cl.dman.camel.router.DocumentoRequest;
-import org.apache.camel.Exchange;
-import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jackson.JacksonDataFormat;
 import org.apache.camel.model.config.BatchResequencerConfig;

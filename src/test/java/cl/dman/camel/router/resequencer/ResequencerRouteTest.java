@@ -1,4 +1,4 @@
-package cl.dman.camel.router.sequencer;
+package cl.dman.camel.router.resequencer;
 
 import cl.dman.camel.router.DocumentoRequest;
 import com.fasterxml.jackson.core.JsonProcessingException;
