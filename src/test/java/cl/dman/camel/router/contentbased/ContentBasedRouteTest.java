@@ -47,7 +47,7 @@ public class ContentBasedRouteTest extends CamelTestSupport {
 		//Arrange
 
 		//Act
-		directIn.sendBody(getDocumento(10, "Factura"));
+		directIn.sendBody(getDocumentoJson(10, "Factura"));
 		//Assert
 		mockDestinoFact.expectedMessageCount(1);
 		mockDestinoGuia.expectedMessageCount(0);
@@ -66,7 +66,7 @@ public class ContentBasedRouteTest extends CamelTestSupport {
 		//Arrange
 
 		//Act
-		directIn.sendBody(getDocumento(21, "Guia Despacho"));
+		directIn.sendBody(getDocumentoJson(21, "Guia Despacho"));
 
 		//Assert
 		mockDestinoFact.expectedMessageCount(0);
@@ -86,7 +86,7 @@ public class ContentBasedRouteTest extends CamelTestSupport {
 		//Arrange
 
 		//Act
-		directIn.sendBody(getDocumento(31, "Nota de Credito"));
+		directIn.sendBody(getDocumentoJson(31, "Nota de Credito"));
 
 		//Assert
 		mockDestinoFact.expectedMessageCount(0);
@@ -99,7 +99,7 @@ public class ContentBasedRouteTest extends CamelTestSupport {
 	}
 
 
-	private String getDocumento(int numero, String tipo) throws JsonProcessingException {
+	private String getDocumentoJson(int numero, String tipo) throws JsonProcessingException {
 		ObjectMapper objectMapper = new ObjectMapper();
 		DocumentoRequest request = new DocumentoRequest(numero, tipo);
 		return objectMapper.writeValueAsString(request);

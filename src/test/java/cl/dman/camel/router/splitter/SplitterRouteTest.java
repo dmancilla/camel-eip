@@ -40,7 +40,7 @@ public class SplitterRouteTest extends CamelTestSupport {
 	public void simpleTestUno() throws Exception {
 		//Arrange
 		DocumentoRequest doc10 = new DocumentoRequest(10, "Factura");
-		String json = getDocumentos(doc10);
+		String json = getDocumentosJson(doc10);
 
 		//Act
 		directIn.sendBody(json);
@@ -59,7 +59,7 @@ public class SplitterRouteTest extends CamelTestSupport {
 		//Arrange
 		DocumentoRequest doc10 = new DocumentoRequest(10, "Factura");
 		DocumentoRequest doc20 = new DocumentoRequest(20, "Guia de Despacho");
-		String json = getDocumentos(doc10, doc20);
+		String json = getDocumentosJson(doc10, doc20);
 
 		//Act
 		directIn.sendBody(json);
@@ -70,7 +70,7 @@ public class SplitterRouteTest extends CamelTestSupport {
 		mockDestino.assertIsSatisfied();
 	}
 
-	private String getDocumentos(DocumentoRequest... documentos) throws Exception {
+	private String getDocumentosJson(DocumentoRequest... documentos) throws Exception {
 		ObjectMapper objectMapper = new ObjectMapper();
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		objectMapper.writeValue(out, documentos);

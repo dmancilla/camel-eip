@@ -37,7 +37,7 @@ public class FilterRouteTest extends CamelTestSupport {
 	@Test
 	public void simpleTestFactura() throws Exception {
 		//Arrange
-		String doc10 = getDocumento(10, "Factura");
+		String doc10 = getDocumentoJson(10, "Factura");
 
 		//Act
 		directIn.sendBody(doc10);
@@ -53,7 +53,7 @@ public class FilterRouteTest extends CamelTestSupport {
 	@Test
 	public void simpleTestOtro() throws Exception {
 		//Arrange
-		String doc31 = getDocumento(31, "Nota de Credito");
+		String doc31 = getDocumentoJson(31, "Nota de Credito");
 
 		//Act
 		directIn.sendBody(doc31);
@@ -70,7 +70,7 @@ public class FilterRouteTest extends CamelTestSupport {
 	@Test
 	public void simpleTestGuia() throws Exception {
 		//Arrange
-		String doc21 = getDocumento(21, "Guia Despacho");
+		String doc21 = getDocumentoJson(21, "Guia Despacho");
 
 		//Act
 		directIn.sendBody(doc21);
@@ -87,12 +87,12 @@ public class FilterRouteTest extends CamelTestSupport {
 	@Test
 	public void simpleTestMultiple() throws Exception {
 		//Arrange
-		String doc11 = getDocumento(11, "Factura");
-		String doc12 = getDocumento(12, "Factura");
-		String doc21 = getDocumento(21, "Guia Despacho");
-		String doc22 = getDocumento(22, "Guia Despacho");
-		String doc31 = getDocumento(31, "Nota de Credito");
-		String doc32 = getDocumento(32, "Nota de Credito");
+		String doc11 = getDocumentoJson(11, "Factura");
+		String doc12 = getDocumentoJson(12, "Factura");
+		String doc21 = getDocumentoJson(21, "Guia Despacho");
+		String doc22 = getDocumentoJson(22, "Guia Despacho");
+		String doc31 = getDocumentoJson(31, "Nota de Credito");
+		String doc32 = getDocumentoJson(32, "Nota de Credito");
 
 		//Act
 		directIn.sendBody(doc11);
@@ -109,7 +109,7 @@ public class FilterRouteTest extends CamelTestSupport {
 	}
 
 
-	private String getDocumento(int numero, String tipo) throws JsonProcessingException {
+	private String getDocumentoJson(int numero, String tipo) throws JsonProcessingException {
 		ObjectMapper objectMapper = new ObjectMapper();
 		DocumentoRequest request = new DocumentoRequest(numero, tipo);
 		return objectMapper.writeValueAsString(request);
