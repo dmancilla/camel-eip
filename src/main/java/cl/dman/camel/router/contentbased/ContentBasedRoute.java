@@ -2,7 +2,7 @@ package cl.dman.camel.router.contentbased;
 
 import cl.dman.camel.router.DocumentoRequest;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.model.dataformat.JsonLibrary;
+import org.apache.camel.component.jackson.JacksonDataFormat;
 import org.springframework.stereotype.Component;
 
 /**
@@ -33,10 +33,12 @@ public class ContentBasedRoute extends RouteBuilder {
 
 	@Override
 	public void configure() {
+		JacksonDataFormat format = new JacksonDataFormat(DocumentoRequest.class);
+
 		from(origen)
 
 			//Transformación de JSON al tipo de dato interno DocumentoRequest
-			.unmarshal().json(JsonLibrary.Jackson, DocumentoRequest.class)
+			.unmarshal(format)
 
 			//Se crea un choice, que verifica el tipo de documento y lo envía al endpoint correspondiente
 			.choice()

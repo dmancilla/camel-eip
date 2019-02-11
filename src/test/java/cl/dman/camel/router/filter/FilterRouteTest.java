@@ -18,17 +18,17 @@ import org.junit.Test;
  */
 public class FilterRouteTest extends CamelTestSupport {
 	private final String ORIGEN_URI = "direct:in";
-	private final String DESTINO_FACT_URI = "mock:destino";
+	private final String DESTINO_URI = "mock:destino";
 
 	@Produce(uri = ORIGEN_URI)
 	private ProducerTemplate directIn;
 
-	@EndpointInject(uri = DESTINO_FACT_URI)
+	@EndpointInject(uri = DESTINO_URI)
 	private MockEndpoint mockDestino;
 
 	@Override
 	protected RoutesBuilder createRouteBuilder() {
-		return new FilterRoute(ORIGEN_URI, DESTINO_FACT_URI);
+		return new FilterRoute(ORIGEN_URI, DESTINO_URI);
 	}
 
 	/**
@@ -37,9 +37,10 @@ public class FilterRouteTest extends CamelTestSupport {
 	@Test
 	public void simpleTestFactura() throws Exception {
 		//Arrange
+		String doc10 = getDocumento(10, "Factura");
 
 		//Act
-		directIn.sendBody(getDocumento(10, "Factura"));
+		directIn.sendBody(doc10);
 		//Assert
 		mockDestino.expectedMessageCount(1);
 
@@ -52,9 +53,10 @@ public class FilterRouteTest extends CamelTestSupport {
 	@Test
 	public void simpleTestOtro() throws Exception {
 		//Arrange
+		String doc31 = getDocumento(31, "Nota de Credito");
 
 		//Act
-		directIn.sendBody(getDocumento(31, "Nota de Credito"));
+		directIn.sendBody(doc31);
 
 		//Assert
 		mockDestino.expectedMessageCount(1);
@@ -68,9 +70,10 @@ public class FilterRouteTest extends CamelTestSupport {
 	@Test
 	public void simpleTestGuia() throws Exception {
 		//Arrange
+		String doc21 = getDocumento(21, "Guia Despacho");
 
 		//Act
-		directIn.sendBody(getDocumento(21, "Guia Despacho"));
+		directIn.sendBody(doc21);
 
 		//Assert
 		mockDestino.expectedMessageCount(0);
@@ -84,15 +87,20 @@ public class FilterRouteTest extends CamelTestSupport {
 	@Test
 	public void simpleTestMultiple() throws Exception {
 		//Arrange
+		String doc11 = getDocumento(11, "Factura");
+		String doc12 = getDocumento(12, "Factura");
+		String doc21 = getDocumento(21, "Guia Despacho");
+		String doc22 = getDocumento(22, "Guia Despacho");
+		String doc31 = getDocumento(31, "Nota de Credito");
+		String doc32 = getDocumento(32, "Nota de Credito");
 
 		//Act
-		directIn.sendBody(getDocumento(11, "Factura"));
-		directIn.sendBody(getDocumento(21, "Guia Despacho"));
-		directIn.sendBody(getDocumento(31, "Nota de Credito"));
-
-		directIn.sendBody(getDocumento(12, "Factura"));
-		directIn.sendBody(getDocumento(22, "Guia Despacho"));
-		directIn.sendBody(getDocumento(32, "Nota de Credito"));
+		directIn.sendBody(doc11);
+		directIn.sendBody(doc21);
+		directIn.sendBody(doc31);
+		directIn.sendBody(doc12);
+		directIn.sendBody(doc22);
+		directIn.sendBody(doc32);
 
 		//Assert
 		mockDestino.expectedMessageCount(4);
