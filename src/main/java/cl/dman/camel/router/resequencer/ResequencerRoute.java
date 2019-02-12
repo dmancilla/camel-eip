@@ -29,7 +29,7 @@ public class ResequencerRoute extends RouteBuilder {
 	@Override
 	public void configure() {
 		JacksonDataFormat format = new JacksonDataFormat(DocumentoRequest.class);
-		BatchResequencerConfig batchConfig = new BatchResequencerConfig(100, 5000L);
+		BatchResequencerConfig batchConfig = new BatchResequencerConfig(100, 1000L);
 
 		from(origen)
 
