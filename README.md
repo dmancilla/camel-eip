@@ -1,6 +1,6 @@
 # Patrones implementados
 
-##Message Router
+## Message Router
 
 ### Arquitecturales
 - [ ] Message Broker
@@ -31,7 +31,7 @@
 - [ ] [Routing Slip](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RoutingTable.html)
   - Cada mensaje contiene una lista de los filtros a los cuales tiene que acceder (Similar al proceso de reglas de recepción de correo de Outlook)
 
-##Messaging
+## Messaging
 - [ ] Message Channel
 - [ ] Message
 - [ ] Pipes and Filters
@@ -39,7 +39,7 @@
 - [ ] Message Translator
 - [ ] Message Endpoint
 
-##Message Channel
+## Message Channel
 
 - [ ] Point-to-Point Channel
 - [ ] Publish-Subscribe Channel
@@ -51,7 +51,7 @@
 - [ ] Messaging Bridge
 - [ ] Message Bus
 
-##Message Construction
+## Message Construction
 - [ ] Command Message
 - [ ] Document Message
 - [ ] Event Message
@@ -62,7 +62,7 @@
 - [ ] Message Expiration
 - [ ] Format Indicator
 
-##Message Transformation
+## Message Transformation
 - [ ] Envelope Wrapper
 - [ ] Content Enricher
 - [ ] Content Filter
@@ -70,7 +70,7 @@
 - [ ] Normalizer
 - [ ] Canonical Data Model
 
-##Message Endpoint
+## Message Endpoint
 - [ ] Messaging Gateway
 - [ ] Messaging Mapper
 - [ ] Transactional Client
@@ -83,7 +83,7 @@
 - [ ] Idempotent Receiver
 - [ ] Service Activator
 
-##System Management
+## System Management
 - [ ] Control Bus
 - [ ] Detour
 - [ ] Wire Tap
